@@ -1,0 +1,4 @@
+export JAVA_HOME=/usr/lib/jvm/java-8-openjdk
+export PATH=$PATH:/home/thomas/.gem/ruby/2.6.0/bin:$HOME/bin
+export BW_SESSION="03cB0l+umofv3Kx7ILbrg724gl401ADj3Af//2bvDJhSSMLW5WfMp/xApcaUuESUBzxUW/2SCPMA6+NlDPEkyw=="
+export MONITOR=$(polybar -m | tail -1 | sed -e 's/:.*$//g')
