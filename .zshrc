@@ -101,7 +101,8 @@ source $ZSH/oh-my-zsh.sh
  alias polybarconfig="$EDITOR $HOME/.config/polybar/config.ini"
  alias i3config="$EDITOR $HOME/.config/i3/config"
  alias config="/usr/bin/git --git-dir=$HOME/dotfiles --work-tree=$HOME"
- alias v=vim
+ alias v=nvim
+ alias vim=nvim
 
 #tmux attach &> /dev/null
 #
@@ -109,4 +110,8 @@ source $ZSH/oh-my-zsh.sh
 #        exec tmux
 #fi
 #
+
+source /usr/bin/aws_zsh_completer.sh
+source /usr/share/fzf/completion.zsh 
+source /usr/share/fzf/key-bindings.zsh
 
