@@ -152,8 +152,7 @@ if has("gui_macvim")
     autocmd GUIEnter * set vb t_vb=
 endif
 
-" Add a bit extra margin to the left
-set foldcolumn=1
+set foldcolumn=0
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Lightline Conf
@@ -163,6 +162,13 @@ set noshowmode
 
 let g:lightline = {
       \ 'colorscheme': 'wombat',
+      \ 'active': {
+      \   'left': [ [ 'mode', 'paste' ],
+      \             [ 'gitbranch', 'readonly', 'filename', 'modified' ] ]
+      \ },
+      \ 'component_function': {
+      \   'gitbranch': 'FugitiveHead'
+      \ },
       \ }
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -469,7 +475,8 @@ Plug 'tpope/vim-fugitive'
 Plug 'preservim/nerdtree'
 Plug 'tpope/vim-surround'
 Plug 'itchyny/lightline.vim'
-Plug 'artur-shaik/vim-javacomplete2'
+Plug 'airblade/vim-gitgutter'
+Plug 'itchyny/vim-gitbranch'
 
 call plug#end()
 
@@ -506,20 +513,6 @@ function! s:check_back_space() abort
   let col = col('.') - 1
   return !col || getline('.')[col - 1]  =~# '\s'
 endfunction
-
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" Javacomplete2 Conf
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-autocmd FileType java setlocal omnifunc=javacomplete#Complete
-
-nmap <F5> <Plug>(JavaComplete-Imports-Add)
-imap <F5> <Plug>(JavaComplete-Imports-Add)
-
-nmap <F6> <Plug>(JavaComplete-Imports-AddMissing)
-imap <F6> <Plug>(JavaComplete-Imports-AddMissing)
-
-nmap <F7> <Plug>(JavaComplete-Imports-RemoveUnused)
-imap <F7> <Plug>(JavaComplete-Imports-RemoveUnused)
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " FZF Conf
@@ -598,4 +591,4 @@ command! -bang -nargs=* GGrep
 
 
 " Set timeout for commands to two seconds (there is something that overrides it up top, bu i don't know where, so i'm putting it here to be sure)
-set timeoutlen=2000
+set timeoutlen=5000
